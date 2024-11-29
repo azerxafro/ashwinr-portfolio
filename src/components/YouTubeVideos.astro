@@ -1,0 +1,76 @@
+---
+import VideoPlayer from './VideoPlayer.astro';
+
+interface Props {
+  videos: {
+    title: string;
+    url: string;
+  }[];
+}
+
+const { videos } = Astro.props;
+---
+
+<section class="youtube-section">
+  <h2>YouTube Videos</h2>
+  <div class="videos-grid">
+    {
+      videos.map((video) => (
+        <div class="video-card">
+          <VideoPlayer videoUrl={video.url} title={video.title} />
+          <h3>{video.title}</h3>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .youtube-section {
+    margin-top: 4rem;
+  }
+
+  h2 {
+    font-size: var(--text-2xl);
+    color: var(--gray-0);
+    margin-bottom: 2rem;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .video-card {
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--theme-transition);
+  }
+
+  .video-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    padding: 1rem;
+    margin: 0;
+    color: var(--gray-200);
+  }
+
+  @media (min-width: 50em) {
+    .videos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 80em) {
+    .videos-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

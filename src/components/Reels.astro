@@ -1,0 +1,91 @@
+---
+import VideoPlayer from './VideoPlayer.astro';
+import CallToAction from './CallToAction.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  reels: {
+    title: string;
+    url: string;
+    thumbnail: string;
+  }[];
+}
+
+const { reels } = Astro.props;
+---
+
+<section class="reels-section">
+  <div class="header">
+    <h2>Featured Reels</h2>
+    <CallToAction href="/reels">
+      View All
+      <Icon icon="arrow-right" size="1.2em" />
+    </CallToAction>
+  </div>
+  <div class="reels-grid">
+    {
+      reels.map((reel) => (
+        <div class="reel-card">
+          <VideoPlayer videoUrl={reel.url} title={reel.title} />
+          <h3>{reel.title}</h3>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .reels-section {
+    margin-top: 4rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: var(--text-2xl);
+    color: var(--gray-0);
+  }
+
+  .reels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .reel-card {
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--theme-transition);
+  }
+
+  .reel-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    padding: 1rem;
+    margin: 0;
+    color: var(--gray-200);
+  }
+
+  @media (min-width: 50em) {
+    .reels-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 80em) {
+    .reels-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

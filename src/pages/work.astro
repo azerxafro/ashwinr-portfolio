@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Reels from '../components/Reels.astro';
+import OtherWorks from '../components/OtherWorks.astro';
+import YouTubeVideos from '../components/YouTubeVideos.astro';
+
+const youtubeVideos = [
+  {
+    title: "Leo - Official Trailer",
+    url: "https://www.youtube.com/watch?v=ZWvMZM5A18o"
+  },
+  {
+    title: "Jailer - Official Trailer",
+    url: "https://www.youtube.com/watch?v=VktuWh5HFUw"
+  },
+  {
+    title: "Vikram - Official Trailer",
+    url: "https://www.youtube.com/watch?v=WIIPfC08Oug"
+  },
+  {
+    title: "Varisu - Official Trailer",
+    url: "https://www.youtube.com/watch?v=nsGTxswX308"
+  },
+  {
+    title: "Thunivu - Official Trailer",
+    url: "https://www.youtube.com/watch?v=jnBZboK17_A"
+  },
+  {
+    title: "Ponniyin Selvan 2 - Official Trailer",
+    url: "https://www.youtube.com/watch?v=EnhS3matIoU"
+  },
+  {
+    title: "Pathu Thala - Official Trailer",
+    url: "https://www.youtube.com/watch?v=94TKxGVHclw"
+  },
+  {
+    title: "Viduthalai - Official Trailer",
+    url: "https://www.youtube.com/watch?v=vd4SFbDcgoo"
+  }
+];
+
+const reels = [
+  {
+    title: "Behind the Scenes - Leo",
+    url: "https://www.youtube.com/watch?v=TJFrqwcNpHM",
+    thumbnail: "/assets/stock-2.jpg"
+  },
+  {
+    title: "Jailer - Edit Breakdown",
+    url: "https://www.youtube.com/watch?v=NmjookhHR0A",
+    thumbnail: "/assets/stock-4.jpg"
+  },
+  {
+    title: "VFX Breakdown - Vikram",
+    url: "https://www.youtube.com/watch?v=v7GFrJc_Fv4",
+    thumbnail: "/assets/stock-3.jpg"
+  },
+  {
+    title: "Motion Graphics Showreel",
+    url: "https://www.youtube.com/watch?v=NqBPVIgttZM",
+    thumbnail: "/assets/stock-1.jpg"
+  }
+];
+
+const otherWorks = [
+  {
+    title: "My Shopify Store",
+    description: "A custom-built e-commerce store featuring unique products and a seamless shopping experience.",
+    link: "https://your-store-url.myshopify.com",
+    icon: "M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+  },
+  {
+    title: "Listen to my Songs",
+    description: "A collection of original music compositions and covers showcasing my musical journey.",
+    link: "https://soundcloud.com/your-profile",
+    icon: "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
+  }
+];
+---
+
+<BaseLayout
+	title="My Work | Ashwin R"
+	description="Learn about Ashwin R's most recent projects"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<YouTubeVideos videos={youtubeVideos} />
+			<Reels reels={reels} />
+			<OtherWorks works={otherWorks} />
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.section-title {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin-bottom: 2rem;
+	}
+
+	@media (min-width: 50em) {
+		.section-title {
+			font-size: var(--text-3xl);
+		}
+	}
+</style>

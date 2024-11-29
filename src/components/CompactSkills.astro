@@ -1,0 +1,160 @@
+---
+interface Skill {
+  name: string;
+  percentage: number;
+  icon: string;
+}
+
+const skills: Skill[] = [
+  { name: 'Adobe Premiere Pro', percentage: 90, icon: 'video-editing' },
+  { name: 'DaVinci Resolve', percentage: 60, icon: 'davinci-resolve' },
+  { name: 'Shopify', percentage: 65, icon: 'shopify' },
+  { name: 'Adobe After Effects', percentage: 80, icon: 'video-editing' },
+  { name: 'Adobe Photoshop', percentage: 70, icon: 'video-editing' }
+];
+
+import Icon from './Icon.astro';
+---
+
+<div class="skills-container">
+  <h2>Professional Skills</h2>
+  <div class="skills-grid">
+    {skills.map((skill) => (
+      <div class="skill-card">
+        <div class="skill-icon">
+          <Icon icon={skill.icon} size="1.5em" />
+        </div>
+        <div class="skill-info">
+          <span class="skill-name">{skill.name}</span>
+          <div class="progress-bar">
+            <div 
+              class="progress" 
+              style={`width: ${skill.percentage}%`}
+              data-percentage={skill.percentage}
+            >
+              <span class="percentage">{skill.percentage}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .skills-container {
+    background: var(--gray-999_40);
+    border: 1px solid var(--gray-800);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    color: var(--gray-0);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .skills-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .skill-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--gray-999);
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .skill-card:hover {
+    transform: translateX(0.5rem);
+  }
+
+  .skill-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--gradient-accent);
+    border-radius: 0.5rem;
+    color: var(--gray-999);
+  }
+
+  .skill-info {
+    flex: 1;
+  }
+
+  .skill-name {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--gray-200);
+    margin-bottom: 0.25rem;
+  }
+
+  .progress-bar {
+    height: 0.5rem;
+    background: var(--gray-800);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress {
+    height: 100%;
+    background: var(--gradient-accent);
+    border-radius: 999px;
+    position: relative;
+    animation: fillProgress 1s ease-out forwards;
+    transform-origin: left;
+  }
+
+  .percentage {
+    position: absolute;
+    right: 0.25rem;
+    top: -1.25rem;
+    font-size: var(--text-xs);
+    color: var(--gray-200);
+  }
+
+  @keyframes fillProgress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (min-width: 50em) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<script>
+  // Add intersection observer to trigger animations when skills become visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.progress').forEach(progress => {
+          progress.style.animation = 'none';
+          progress.offsetHeight; // Trigger reflow
+          progress.style.animation = 'fillProgress 1s ease-out forwards';
+        });
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('.skills-container').forEach(container => {
+    observer.observe(container);
+  });
+</script>

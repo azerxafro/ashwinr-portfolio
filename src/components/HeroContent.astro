@@ -1,0 +1,92 @@
+---
+import Pill from './Pill.astro';
+import Icon from './Icon.astro';
+---
+
+<div class="hero-content animate-fade-in">
+  <div class="text-content">
+    <h1>Hello, I'm <br/><span class="name">Ashwin R</span></h1>
+    <div class="roles">
+      <p class="role animate-slide-in" style="animation-delay: 0.2s;">Video Editor</p>
+      <p class="role animate-slide-in" style="animation-delay: 0.4s;">Music Artist</p>
+      <p class="role animate-slide-in" style="animation-delay: 0.6s;">Content Creator</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    z-index: 1;
+    padding: 3rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    color: var(--gray-0);
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .name {
+    font-family: var(--font-special);
+    font-size: var(--text-5xl);
+    background: linear-gradient(to right, var(--accent-light), var(--accent-regular));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-top: 0.5rem;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .roles {
+    display: flex;
+    gap: 1rem;
+    font-size: var(--text-lg);
+    color: var(--gray-300);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .role {
+    opacity: 0;
+  }
+
+  .role:not(:last-child)::after {
+    content: "•";
+    margin-left: 1rem;
+    color: var(--accent-regular);
+  }
+
+  @media (min-width: 50em) {
+    .hero-content {
+      padding: 4rem;
+    }
+
+    h1 {
+      font-size: var(--text-5xl);
+    }
+
+    .name {
+      font-size: var(--text-6xl);
+    }
+
+    .roles {
+      font-size: var(--text-xl);
+    }
+  }
+</style>

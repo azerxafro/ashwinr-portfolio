@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PortfolioPreview from './PortfolioPreview.astro';
+
+interface Props {
+  projects: CollectionEntry<'work'>[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="work-grid">
+  {
+    projects.map((project) => (
+      <PortfolioPreview project={project} />
+    ))
+  }
+</div>
+
+<style>
+  .work-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  @media (min-width: 50em) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+    }
+  }
+</style>

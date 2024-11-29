@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import ReelsGrid from '../components/ReelsGrid.astro';
+
+const reels = [
+  {
+    title: "Behind the Scenes - Leo",
+    url: "https://www.youtube.com/watch?v=TJFrqwcNpHM",
+    thumbnail: "/assets/stock-2.jpg"
+  },
+  {
+    title: "Jailer - Edit Breakdown",
+    url: "https://www.youtube.com/watch?v=NmjookhHR0A",
+    thumbnail: "/assets/stock-4.jpg"
+  },
+  {
+    title: "VFX Breakdown - Vikram",
+    url: "https://www.youtube.com/watch?v=v7GFrJc_Fv4",
+    thumbnail: "/assets/stock-3.jpg"
+  },
+  {
+    title: "Motion Graphics Showreel",
+    url: "https://www.youtube.com/watch?v=NqBPVIgttZM",
+    thumbnail: "/assets/stock-1.jpg"
+  },
+  {
+    title: "Leo - Color Grading Process",
+    url: "https://www.youtube.com/watch?v=example1",
+    thumbnail: "/assets/stock-2.jpg"
+  },
+  {
+    title: "Jailer - Sound Design",
+    url: "https://www.youtube.com/watch?v=example2",
+    thumbnail: "/assets/stock-4.jpg"
+  },
+  {
+    title: "Vikram - VFX Pipeline",
+    url: "https://www.youtube.com/watch?v=example3",
+    thumbnail: "/assets/stock-3.jpg"
+  },
+  {
+    title: "2023 Editing Reel",
+    url: "https://www.youtube.com/watch?v=example4",
+    thumbnail: "/assets/stock-1.jpg"
+  }
+];
+---
+
+<BaseLayout title="Reels | Ashwin R" description="Check out my video editing reels">
+  <div class="stack gap-20">
+    <main class="wrapper stack gap-8">
+      <h1>Featured Reels</h1>
+      <ReelsGrid reels={reels} />
+    </main>
+    <ContactCTA />
+  </div>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: var(--text-4xl);
+    color: var(--gray-0);
+  }
+</style>

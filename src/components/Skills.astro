@@ -1,0 +1,62 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section class="box skills">
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="video-editing" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Adobe Creative Suite</h2>
+		<p>Familiar with major Adobe softwares including Photoshop, Illustrator, After Effects, Premiere pro and even Adobe XD.</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="davinci-resolve" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>DaVinci Resolve</h2>
+		<p>I have mastered the color theory, so I can do color corrections and grading using industry-standard DaVinci Resolve Studio.</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4">
+		<Icon icon="shopify" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Shopify</h2>
+		<p>I can build Shopify pages, and tweak/tailor content more elegantly.</p>
+	</div>
+</section>
+
+<style>
+	.box {
+		border: 1px solid var(--gray-800);
+		border-radius: 0.75rem;
+		padding: 1.5rem;
+		background-color: var(--gray-999_40);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.skills {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+	}
+
+	.skills h2 {
+		font-size: var(--text-lg);
+	}
+
+	.skills p {
+		color: var(--gray-400);
+	}
+
+	@media (min-width: 50em) {
+		.box {
+			border-radius: 1.5rem;
+			padding: 2.5rem;
+		}
+
+		.skills {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 5rem;
+		}
+
+		.skills h2 {
+			font-size: var(--text-2xl);
+		}
+	}
+</style>

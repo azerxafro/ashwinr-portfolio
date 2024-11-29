@@ -1,0 +1,28 @@
+---
+import HeroContent from './HeroContent.astro';
+---
+
+<section class="hero">
+  <HeroContent />
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: -1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  @media (min-width: 50em) {
+    .hero {
+      min-height: 70vh;
+      margin: -5rem;
+      margin-bottom: 5rem;
+    }
+  }
+</style>

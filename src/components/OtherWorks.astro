@@ -1,0 +1,118 @@
+---
+interface Props {
+  works: {
+    title: string;
+    description: string;
+    link: string;
+    icon: string;
+  }[];
+}
+
+const { works } = Astro.props;
+---
+
+<section class="other-works">
+  <h2>Other Works</h2>
+  <div class="works-grid">
+    {
+      works.map((work) => (
+        <a href={work.link} class="work-card" target="_blank" rel="noopener noreferrer">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d={work.icon} />
+            </svg>
+          </div>
+          <div class="content">
+            <h3>{work.title}</h3>
+            <p>{work.description}</p>
+          </div>
+          <div class="arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .other-works {
+    margin-top: 4rem;
+  }
+
+  h2 {
+    font-size: var(--text-2xl);
+    color: var(--gray-0);
+    margin-bottom: 2rem;
+  }
+
+  .works-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .work-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    border-radius: 0.75rem;
+    color: var(--gray-300);
+    text-decoration: none;
+    transition: all var(--theme-transition);
+  }
+
+  .work-card:hover {
+    color: var(--gray-0);
+    box-shadow: var(--shadow-md);
+  }
+
+  .icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-accent);
+    border-radius: 0.75rem;
+    color: var(--gray-999);
+  }
+
+  .icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .content h3 {
+    font-size: var(--text-lg);
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .content p {
+    margin: 0;
+    font-size: var(--text-md);
+  }
+
+  .arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--accent-regular);
+    transition: transform var(--theme-transition);
+  }
+
+  .work-card:hover .arrow {
+    transform: translateX(0.5rem);
+  }
+
+  @media (min-width: 50em) {
+    .works-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

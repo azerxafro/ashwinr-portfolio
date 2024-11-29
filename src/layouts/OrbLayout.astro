@@ -1,0 +1,29 @@
+---
+import AnimatedOrb from '../components/AnimatedOrb.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["orb-layout", className]}>
+  <AnimatedOrb />
+  <div class="content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .orb-layout {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+</style>
