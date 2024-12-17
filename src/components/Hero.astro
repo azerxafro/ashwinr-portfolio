@@ -1,8 +1,10 @@
 ---
 import HeroContent from './HeroContent.astro';
+import InteractiveBackground from './InteractiveBackground.astro';
 ---
 
 <section class="hero">
+  <InteractiveBackground />
   <HeroContent />
 </section>
 
@@ -14,15 +16,17 @@ import HeroContent from './HeroContent.astro';
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin: -1.5rem;
-    margin-bottom: 3.5rem;
+    margin: -1.5rem -1.5rem 3.5rem -1.5rem;
+    padding: 0;
+    width: calc(100% + 3rem);
   }
 
   @media (min-width: 50em) {
     .hero {
       min-height: 70vh;
-      margin: -5rem;
-      margin-bottom: 5rem;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      width: 100vw;
     }
   }
 </style>

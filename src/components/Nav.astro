@@ -10,7 +10,7 @@ const textLinks: { label: string; href: string }[] = [
 	{ label: 'About', href: '/about/' },
 ];
 
-/** Icon links to social media — edit these with links to your profiles! */
+/** Icon links to social media */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[] = [
 	{ label: 'GitHub', href: 'https://github.com/me', icon: 'github-logo' },
 	{ label: 'LinkedIn', href: 'https://linkedin.com/in/me', icon: 'linkedin-logo' },
@@ -22,7 +22,9 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 <nav>
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<div class="logo">A</div>
+			<div class="logo">
+				<Icon icon="microphone-stage" size="1.2em" />
+			</div>
 		</a>
 		<menu-button>
 			<template>
@@ -182,7 +184,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	}
 
 	.logo {
-		font-family: var(--font-special);
+		font-family: var(--font-brand);
 		font-size: 2rem;
 		font-weight: 700;
 		color: var(--accent-regular);
@@ -190,7 +192,6 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
-		text-transform: uppercase;
 		line-height: 1;
 		padding: 0.2em;
 		border: 2px solid var(--accent-regular);
@@ -206,6 +207,20 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 	.logo:hover {
 		transform: scale(1.1);
 		border-color: var(--accent-dark);
+	}
+
+	:global(.logo svg) {
+		width: 100%;
+		height: 100%;
+		stroke: var(--accent-regular);
+		fill: none;
+		stroke-width: 16;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	:global(.logo:hover svg) {
+		stroke: var(--accent-dark);
 	}
 
 	.menu-button {

@@ -1,0 +1,27 @@
+---
+import '../styles/cursor.css';
+---
+
+<div class="custom-cursor">
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+</div>
+
+<script>
+  import { CustomCursor } from '../utils/cursor';
+
+  // Initialize cursor when the page loads
+  function initCursor() {
+    new CustomCursor();
+  }
+
+  // Handle both initial load and Astro view transitions
+  document.addEventListener('astro:page-load', initCursor);
+  
+  // Initialize on first load
+  if (document.readyState === 'complete') {
+    initCursor();
+  } else {
+    document.addEventListener('DOMContentLoaded', initCursor);
+  }
+</script>

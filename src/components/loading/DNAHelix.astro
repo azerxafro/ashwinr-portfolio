@@ -1,0 +1,94 @@
+---
+---
+
+<div class="dna-container">
+  <div class="dna-helix">
+    {Array.from({ length: 10 }).map((_, i) => (
+      <div class="base-pair" style={`--delay: ${i * 0.1}s`}>
+        <div class="left-base"></div>
+        <div class="backbone"></div>
+        <div class="right-base"></div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .dna-container {
+    width: 100px;
+    height: 200px;
+    perspective: 1000px;
+  }
+
+  .dna-helix {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate 4s linear infinite;
+  }
+
+  .base-pair {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    top: calc(var(--index) * 20px);
+    animation: wave 2s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+
+  .backbone {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-regular);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .left-base,
+  .right-base {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent-light);
+  }
+
+  .left-base {
+    left: 0;
+  }
+
+  .right-base {
+    right: 0;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  @keyframes wave {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  :root.theme-dark .backbone {
+    background: var(--accent-light);
+  }
+
+  :root.theme-dark .left-base,
+  :root.theme-dark .right-base {
+    background: var(--accent-regular);
+  }
+</style>

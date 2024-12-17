@@ -1,0 +1,53 @@
+/* Custom cursor styles */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-cursor.active {
+  opacity: 1;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-regular);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.cursor-outline {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--accent-regular);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease-out;
+}
+
+/* Hide default cursor */
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active [role="button"] {
+  cursor: none !important;
+}
+
+/* Hover state */
+body.cursor-hover .cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-light);
+}
+
+body.cursor-hover .cursor-outline {
+  width: 50px;
+  height: 50px;
+  border-color: var(--accent-light);
+}
