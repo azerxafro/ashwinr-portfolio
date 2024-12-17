@@ -7,26 +7,31 @@ import Icon from './Icon.astro';
 </div>
 
 <style>
-  .logo {
-    font-family: var(--font-brand);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-regular);
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-    padding: 0.2em;
-    border: 2px solid var(--accent-regular);
-    border-radius: 0.25em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5em;
-    height: 1.5em;
-    transition: all 0.2s ease-in-out;
-  }
+.logo {
+  font-family: var(--font-brand);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-regular);
+  background: none; /* Remove background */
+  -webkit-background-clip: unset; /* Unset background-clip */
+  -webkit-text-fill-color: unset; /* Unset text-fill-color */
+  background-clip: unset; /* Unset background-clip */
+  line-height: 1;
+  width: 2.5em;
+  height: 2.5em;
+  transition: transform 0.2s ease;
+  border: none; /* Remove border if there is any */
+  box-shadow: none; /* Remove box shadow if there is any */
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
 
   .logo:hover {
     transform: scale(1.1);
