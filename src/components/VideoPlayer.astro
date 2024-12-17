@@ -6,11 +6,11 @@ interface Props {
 
 const { videoUrl, title } = Astro.props;
 
-// Extract video ID from YouTube URL
+// Extract video ID from YouTube URL, including Shorts
 const getYouTubeId = (url: string) => {
-  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(shorts\/))([^#&?]*).*/;
   const match = url.match(regExp);
-  return match && match[7].length === 11 ? match[7] : null;
+  return match && match[8].length > 0 ? match[8] : null;
 };
 
 const videoId = getYouTubeId(videoUrl);
