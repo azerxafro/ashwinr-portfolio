@@ -1,14 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout title="About | Ashwin R" description="About Ashwin R - CV">
 	<div class="stack gap-20">
 		<main class="wrapper about">
-
 			<section>
 				<h2 class="section-title">Summary</h2>
 				<div class="content">
@@ -30,10 +29,10 @@ import Hero from '../components/Hero.astro';
 				</div>
 			</section>
 			<section>
-					<h3 class="section-title">Reason for career switches</h3>
-					<p>Over the past three years, I have intentionally sought out diverse opportunities across different companies to explore and experiment with my abilities in various creative streams. This journey has allowed me to gain a well-rounded perspective and invaluable experiences in multiple facets of the industry. Through this process, I have discovered a deep passion for video editing and creative direction, solidifying my decision to pursue these roles professionally. Additionally, I have recognized my love for music, which I have decided to continue as a cherished hobby. </p>
-					<br>
-							<h2 class="section-title">Experience</h2>
+				<h3 class="section-title">Reason for career switches</h3>
+				<p>Over the past three years, I have intentionally sought out diverse opportunities across different companies to explore and experiment with my abilities in various creative streams. This journey has allowed me to gain a well-rounded perspective and invaluable experiences in multiple facets of the industry. Through this process, I have discovered a deep passion for video editing and creative direction, solidifying my decision to pursue these roles professionally. Additionally, I have recognized my love for music, which I have decided to continue as a cherished hobby. </p>
+				<br>
+				<h2 class="section-title">Experience</h2>
 				<div class="content">
 					<p>Sirpi Aesthetics (Content Creator & Video Editor) - 2024</p>
 					<p>The Photo Spot (Senior Video Editor & Creative Manager) - 2023</p>
@@ -41,6 +40,13 @@ import Hero from '../components/Hero.astro';
 				</div>
 			</section>
 		</main>
+
+		<div class="know-more-section">
+			<Button href="/bento" variant="primary">
+				Know More About Me
+				<Icon icon="arrow-right" size="1.2em" />
+			</Button>
+		</div>
 
 		<ContactCTA />
 	</div>
@@ -51,12 +57,6 @@ import Hero from '../components/Hero.astro';
 		display: flex;
 		flex-direction: column;
 		gap: 3.5rem;
-	}
-
-	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
 	}
 
 	section {
@@ -76,15 +76,13 @@ import Hero from '../components/Hero.astro';
 		grid-column: 2 / 4;
 	}
 
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
-	}
-
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
+	.know-more-section {
+		display: flex;
+		justify-content: center;
+		padding: 2rem 0;
+		background: var(--gray-999_40);
+		border-top: 1px solid var(--gray-800);
+		border-bottom: 1px solid var(--gray-800);
 	}
 
 	@media (min-width: 50em) {

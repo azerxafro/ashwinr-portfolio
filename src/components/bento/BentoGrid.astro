@@ -1,0 +1,37 @@
+---
+import BentoItem from './BentoItem.astro';
+import type { BentoItem as BentoItemType } from '../../types/bento';
+
+interface Props {
+  items: BentoItemType[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="bento-grid">
+  {items.map(item => (
+    <BentoItem item={item} />
+  ))}
+</div>
+
+<style>
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-grid {
+      gap: 1.5rem;
+    }
+  }
+</style>

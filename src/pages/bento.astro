@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BentoGrid from '../components/bento/BentoGrid.astro';
+
+const bentoItems = [
+  {
+    title: "Video Editor",
+    description: "Professional video editor with expertise in Adobe Premiere Pro, After Effects, and DaVinci Resolve",
+    icon: "video-editing",
+    class: "col-span-1 row-span-1 md:col-span-2",
+    gradient: "bg-gradient-to-br from-purple-500/10 to-pink-500/10 hover:from-purple-500/20 hover:to-pink-500/20"
+  },
+  {
+    title: "Music Artist",
+    description: "Independent music artist on Spotify with original compositions",
+    icon: "microphone-stage",
+    class: "col-span-1 row-span-1",
+    gradient: "bg-gradient-to-br from-blue-500/10 to-purple-500/10 hover:from-blue-500/20 hover:to-purple-500/20"
+  },
+  {
+    title: "Content Creator",
+    description: "YouTube content creator with focus on movie analysis and industry insights",
+    icon: "youtube-logo",
+    class: "col-span-1 row-span-1",
+    gradient: "bg-gradient-to-br from-pink-500/10 to-rose-500/10 hover:from-pink-500/20 hover:to-rose-500/20"
+  },
+  {
+    title: "Latest Work",
+    description: "Leo Movie - Insider Leaks",
+    link: "https://www.youtube.com/watch?v=cftXsjqSvk4",
+    class: "col-span-1 row-span-1 md:col-span-2",
+    type: "video",
+    gradient: "bg-gradient-to-br from-amber-500/10 to-red-500/10 hover:from-amber-500/20 hover:to-red-500/20"
+  },
+  {
+    title: "Skills",
+    items: ["Adobe Creative Suite", "DaVinci Resolve", "Shopify", "Motion Graphics", "Color Grading"],
+    class: "col-span-1 row-span-2",
+    gradient: "bg-gradient-to-br from-green-500/10 to-emerald-500/10 hover:from-green-500/20 hover:to-emerald-500/20"
+  },
+  {
+    title: "Experience",
+    items: [
+      "Sirpi Aesthetics - Content Creator & Video Editor (2024)",
+      "The Photo Spot - Senior Video Editor & Creative Manager (2023)",
+      "Film Shades Creation - Assistant Director & Art Designer (2022)"
+    ],
+    class: "col-span-1 md:col-span-2 row-span-1",
+    gradient: "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 hover:from-blue-500/20 hover:to-cyan-500/20"
+  }
+];
+---
+
+<BaseLayout title="Bento Portfolio | Ashwin R" description="Bento-style portfolio showcasing my work">
+  <main class="wrapper">
+    <h1 class="title">Ashwin R</h1>
+    <p class="subtitle">Video Editor & Content Creator</p>
+    <BentoGrid items={bentoItems} />
+  </main>
+</BaseLayout>
+
+<style>
+  .wrapper {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: var(--text-4xl);
+    color: var(--gray-0);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: var(--text-xl);
+    color: var(--gray-300);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .wrapper {
+      padding: 4rem 2rem;
+    }
+  }
+</style>
